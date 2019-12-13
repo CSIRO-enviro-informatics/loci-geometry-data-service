@@ -27,6 +27,10 @@ services:
     ports:
       - "${POSTGIS_EXPOSED_PORT:-25432}:5432"
 
+  loader:
+      build: load_data/
+      command: tail -f /dev/null
+
 volumes:
    postgis-data:
 
