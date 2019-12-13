@@ -28,8 +28,10 @@ services:
       - "${POSTGIS_EXPOSED_PORT:-25432}:5432"
 
   loader:
-      build: load_data/
+      build: ./load_data
       command: tail -f /dev/null
+      #command: sh -c './wait-for-it.sh db:5432 -t 0 -- ./entrypoint.sh'
+
 
 volumes:
    postgis-data:
