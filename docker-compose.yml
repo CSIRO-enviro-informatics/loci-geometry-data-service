@@ -29,8 +29,15 @@ services:
 
   loader:
       build: ./load_data
-      command: tail -f /dev/null
-      #command: sh -c './wait-for-it.sh db:5432 -t 0 -- ./entrypoint.sh'
+      environment:
+        #edit these to point to the right Postgis DB
+        - "PG_DBNAME=${GSDB_DBNAME:-gis}"
+        - "PG_HOSTNAME=${GSDB_HOSTNAME:-db}"
+        - "PG_PORT=${GSDB_PORT:-5432}"
+        - "PG_USER=${GSDB_USER:-jon}"
+        - "PG_PASS=${GSDB_PASS:-jon}"
+      #command: tail -f /dev/null
+      command: sh -c './wait-for-it.sh db:5432 -t 0 -- ./entrypoint.sh'
 
 
 volumes:
