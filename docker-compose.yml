@@ -9,6 +9,10 @@ services:
       - "GSDB_PORT=${GSDB_PORT:-5432}"
       - "GSDB_USER=${GSDB_USER:-jon}"
       - "GSDB_PASS=${GSDB_PASS:-jon}"
+#    volumes:
+#      - type: bind
+#        source: ${PWD}/theme/css
+#        target: /app/view/static/css
     ports:
      - "${PORT:-3000}:3000"
 
@@ -37,7 +41,14 @@ services:
         - "PG_USER=${GSDB_USER:-jon}"
         - "PG_PASS=${GSDB_PASS:-jon}"
       #command: tail -f /dev/null
-      command: sh -c './wait-for-it.sh db:5432 -t 0 -- ./entrypoint.sh'
+      volumes:
+        - type: bind
+          source: ${PWD}/load_data/wait-for-it.sh
+          target: /wait-for-it.sh
+        - type: bind
+          source: ${PWD}/load_data/init.sh
+          target: /init.sh
+      command: sh -c "/init.sh"
 
 
 volumes:
