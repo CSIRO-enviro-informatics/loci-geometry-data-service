@@ -1,4 +1,4 @@
-
+drop view combined_geoms;
 create view combined_geoms as (
 	    select sa1_main16 as id, geom_3577 as geom, 'asgs16_sa1' as dataset from asgs16_sa1
 	       UNION
@@ -17,6 +17,7 @@ create view combined_geoms as (
 	    select cast(hydroid as varchar) as id, geom_3577 as geom, 'geofabric2_1_1_awradrainagedivision' as dataset from geofabric2_1_1_awradrainagedivision
 );
 
+drop table combined_geom_count;
 
 CREATE TABLE combined_geom_count (
 	    geom_total_count integer    
