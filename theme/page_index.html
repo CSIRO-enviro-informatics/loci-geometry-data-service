@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h1>Geometry Data Service</h1>    
+    <h2>Starting points</h2>
+    <h3>Geometry Register</h3>
+    <ul>
+        <li> <a href="{{ request.host_url }}geometry/">Register of Geometries</a> </li>
+    </ul>
+   
+    <h3>Example endpoints</h3>
+    <ul>
+        <li> <a href="{{ request.host_url }}geometry/asgs16_sa1/21205132002">ASGS 2016 Statistical Area 1 21205132002 geometry</a> </li>
+        <li> <a href="{{ request.host_url }}geometry/geofabric2_1_1_riverregion/9400404">Geofabric v2.1.1. River Region 9400404 geometry</a> </li>
+        <li> <a href="{{ request.host_url }}geometry/landmark/sydney-opera-house">Sydney Opera House (point geometry)</a> </li>
+    </ul>
+    
+    <h2>More information</h2>
+    <p>See the <a href="/about">About Page</a> for more information.</p>
+
+{% endblock %}
