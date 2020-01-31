@@ -1,5 +1,5 @@
-drop view combined_geoms;
-create view combined_geoms as (
+drop materialized view combined_geoms;
+create materialized view combined_geoms as (
 	    select mb_code16 as id, geom_3577 as geom, 'asgs16_mb' as dataset from asgs16_mb
 	       UNION
 	    select sa1_main16 as id, geom_3577 as geom, 'asgs16_sa1' as dataset from asgs16_sa1
@@ -34,6 +34,9 @@ create view combined_geoms as (
 	       UNION
 	    select cast(hydroid as varchar) as id, geom_3577 as geom, 'geofabric2_1_1_awradrainagedivision' as dataset from geofabric2_1_1_awradrainagedivision
 );
+
+
+CREATE INDEX gds_geom_idx ON combined_geoms_mat  USING GIST(geom);
 
 drop table combined_geom_count;
 
