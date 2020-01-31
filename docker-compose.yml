@@ -43,7 +43,6 @@ services:
         - "PG_PORT=${GSDB_PORT:-5432}"
         - "PG_USER=${GSDB_USER:-jon}"
         - "PG_PASS=${GSDB_PASS:-jon}"
-      #command: tail -f /dev/null
       volumes:
         - type: bind
           source: ${PWD}/load_data/wait-for-it.sh
@@ -52,6 +51,7 @@ services:
           source: ${PWD}/load_data/init.sh
           target: /init.sh
       command: sh -c "/init.sh"
+      #command: tail -f /dev/null
 
 
 volumes:

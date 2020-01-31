@@ -18,6 +18,14 @@ asgs2016/1270055001_mb_2016_sa_shape.zip
 asgs2016/1270055001_mb_2016_tas_shape.zip
 asgs2016/1270055001_mb_2016_vic_shape.zip
 asgs2016/1270055001_mb_2016_wa_shape.zip
+asgs2016/1270055002_iare_2016_aust_shape.zip
+asgs2016/1270055002_iloc_2016_aust_shape.zip
+asgs2016/1270055002_ireg_2016_aust_shape.zip
+asgs2016/1270055004_sos_2016_aust_shape.zip
+asgs2016/1270055004_sosr_2016_aust_shape.zip
+asgs2016/1270055004_sua_2016_aust_shape.zip
+asgs2016/1270055004_ucl_2016_aust_shape.zip
+asgs2016/1270055005_ra_2016_aust_shape.zip
 "
 
 GF_FILE_LIST="
@@ -67,6 +75,14 @@ SA2_2016_AUST.shp|asgs16_sa2
 SA3_2016_AUST.shp|asgs16_sa3
 SA4_2016_AUST.shp|asgs16_sa4
 STE_2016_AUST.shp|asgs16_ste
+ILOC_2016_AUST.shp|asgs16_iloc
+IREG_2016_AUST.shp|asgs16_ireg
+IARE_2016_AUST.shp|asgs16_iare
+UCL_2016_AUST.shp|asgs16_ucl
+SOSR_2016_AUST.shp|asgs16_sosr
+SOS_2016_AUST.shp|asgs16_sos
+SUA_2016_AUST.shp|asgs16_sua
+RA_2016_AUST.shp|asgs16_ra
 "
 
 # load asgs files into postgis
@@ -76,6 +92,31 @@ for map in $ASGS16_MAP; do
     TNAME=${ary[1]}
     echo "Loading $FNAME into DB table: $TNAME"
     ogr2ogr -f "PostgreSQL"  PG:"host=${HOST} port=${PORT} dbname=${DB} user=${USER} password=${PASS}"  ${FNAME} -nln ${TNAME} -overwrite -progress -lco GEOMETRY_NAME=geom_3577 -lco PRECISION=NO -t_srs EPSG:3577 -nlt MULTIPOLYGON --config PG_USE_COPY YES
+done
+
+
+# load first asgs mb files into postgis
+FNAME=MB_2016_VIC.shp
+TNAME=asgs16_mb
+echo "Loading $FNAME into DB table: $TNAME"
+ogr2ogr -f "PostgreSQL"  PG:"host=${HOST} port=${PORT} dbname=${DB} user=${USER} password=${PASS}"  ${FNAME} -nln ${TNAME} -overwrite -progress -lco GEOMETRY_NAME=geom_3577 -lco PRECISION=NO -t_srs EPSG:3577 -nlt MULTIPOLYGON --config PG_USE_COPY YES
+
+ASGS16_MB_LIST="
+MB_2016_NSW.shp
+MB_2016_ACT.shp
+MB_2016_QLD.shp
+MB_2016_NT.shp
+MB_2016_SA.shp
+MB_2016_TAS.shp
+MB_2016_WA.shp
+"
+
+# load rest of asgs mb files into postgis
+for mbinstance in $ASGS16_MB_LIST; do
+    FNAME=${mbinstance}
+    TNAME=asgs16_mb
+    echo "Loading $FNAME into DB table: $TNAME"
+    ogr2ogr -f "PostgreSQL"  PG:"host=${HOST} port=${PORT} dbname=${DB} user=${USER} password=${PASS}"  ${FNAME} -nln ${TNAME} -progress -lco GEOMETRY_NAME=geom_3577 -lco PRECISION=NO -t_srs EPSG:3577 -nlt MULTIPOLYGON --config PG_USE_COPY YES
 done
 
 #load geofabric
