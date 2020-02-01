@@ -36,7 +36,7 @@ create materialized view combined_geoms as (
 );
 
 
-CREATE INDEX gds_geom_idx ON combined_geoms_mat  USING GIST(geom);
+CREATE INDEX gds_geom_idx ON combined_geoms USING GIST(geom);
 
 drop table combined_geom_count;
 
