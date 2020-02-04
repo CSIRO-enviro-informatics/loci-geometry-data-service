@@ -14,6 +14,16 @@
         <li> <a href="{{ request.host_url }}geometry/geofabric2_1_1_riverregion/9400404">Geofabric v2.1.1. River Region 9400404 geometry</a> </li>
         <li> <a href="{{ request.host_url }}geometry/landmark/sydney-opera-house">Sydney Opera House (point geometry)</a> </li>
     </ul>
+
+    <h3>Example Search endpoints</h3>
+    <p>Find geometries (and Loc-I features) by point/lat-long</p>
+    <ul>
+        <li> <a href="{{ request.host_url }}search/latlng/142.111,-32.1231">Point(142.111,-32.1231)</a> (note: default is 4326/WGS84) </li>
+        <li> <a href="{{ request.host_url }}search/latlng/16615575.46,-4215695.740446?crs=3857">Point(16615575.46,-4215695.740446) with Spatial Reference ID 3857</a> (i.e. EPSG:3857 WGS 84 / Pseudo-Mercator)</li>
+        <li> <a href="{{ request.host_url }}search/latlng/16615575.46,-4215695.740446/dataset/asgs16_mb?crs=3857">Point(16615575.46,-4215695.740446) with Spatial Reference ID 3857, and dataset is the ASGS16 Meshblocks</a></li>
+    </ul>
+
+
     
     <h2>More information</h2>
     <p>See the <a href="/about">About Page</a> for more information.</p>
