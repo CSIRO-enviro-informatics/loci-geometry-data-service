@@ -26,6 +26,10 @@ asgs2016/1270055004_sosr_2016_aust_shape.zip
 asgs2016/1270055004_sua_2016_aust_shape.zip
 asgs2016/1270055004_ucl_2016_aust_shape.zip
 asgs2016/1270055005_ra_2016_aust_shape.zip
+asgs2016/1270055003_ced_2016_aust_shape.zip 
+asgs2016/1270055003_lga_2016_aust_shape.zip
+asgs2016/1270055003_nrmr_2016_aust_shape.zip
+asgs2016/1270055003_ssc_2016_aust_shape.zip
 "
 
 GF_FILE_LIST="
@@ -83,6 +87,10 @@ SOSR_2016_AUST.shp|asgs16_sosr
 SOS_2016_AUST.shp|asgs16_sos
 SUA_2016_AUST.shp|asgs16_sua
 RA_2016_AUST.shp|asgs16_ra
+CED_2016_AUST.shp|asgs16_ced
+LGA_2016_AUST.shp|asgs16_lga
+NRMR_2016_AUST.shp|asgs16_nrmr
+SSC_2016_AUST.shp|asgs16_ssc
 "
 
 # load asgs files into postgis

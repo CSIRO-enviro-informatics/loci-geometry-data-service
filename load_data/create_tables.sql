@@ -28,6 +28,14 @@ create materialized view combined_geoms as (
 	       UNION
 	    select sua_code16 as id, geom_3577 as geom, 'asgs16_sua' as dataset from asgs16_sua
 	       UNION
+	    select ced_code16 as id, geom_3577 as geom, 'asgs16_ced' as dataset from asgs16_ced
+	       UNION
+	    select lga_code16 as id, geom_3577 as geom, 'asgs16_lga' as dataset from asgs16_lga
+	       UNION
+	    select nrm_code16 as id, geom_3577 as geom, 'asgs16_nrmr' as dataset from asgs16_nrmr
+	       UNION
+	    select ssc_code16 as id, geom_3577 as geom, 'asgs16_ssc' as dataset from asgs16_ssc
+	       UNION
 	    select cast(hydroid as varchar) as id, geom_3577 as geom, 'geofabric2_1_1_ahgfcontractedcatchment' as dataset from geofabric2_1_1_ahgfcontractedcatchment
 	       UNION
 	    select cast(hydroid as varchar) as id, geom_3577 as geom, 'geofabric2_1_1_riverregion' as dataset from geofabric2_1_1_riverregion
