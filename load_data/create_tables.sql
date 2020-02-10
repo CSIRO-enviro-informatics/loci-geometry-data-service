@@ -8,6 +8,8 @@ create materialized view combined_geoms as (
 	       UNION
 	    select sa3_code16 as id, geom_3577 as geom, 'asgs16_sa3' as dataset from asgs16_sa3
 	       UNION
+	    select gcc_code16 as id, geom_3577 as geom, 'asgs16_gccsa' as dataset from asgs16_gccsa
+	       UNION
 	    select sa4_code16 as id, geom_3577 as geom, 'asgs16_sa4' as dataset from asgs16_sa4
 	       UNION
 	    select ste_code16 as id, geom_3577 as geom, 'asgs16_ste' as dataset from asgs16_ste

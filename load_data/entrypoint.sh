@@ -74,6 +74,7 @@ USER=$PG_USER
 PASS=$PG_PASS
 
 ASGS16_MAP="
+GCCSA_2016_AUST.shp|asgs16_gccsa
 SA1_2016_AUST.shp|asgs16_sa1
 SA2_2016_AUST.shp|asgs16_sa2
 SA3_2016_AUST.shp|asgs16_sa3
