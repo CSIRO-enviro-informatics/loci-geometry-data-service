@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  caddy:
+    image: abiosoft/caddy
+    ports:
+      - 443:443
+    volumes:
+      - ./Caddyfile:/etc/Caddyfile
+      - /certs:/etc/ssl
+    links:
+      - gservice
+    restart: always
