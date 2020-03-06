@@ -50,6 +50,8 @@ for file in $ASGS16_FILE_LIST; do
     fi
     #unzip 
     unzip -o $filename
+    #remove file to conserve disk space
+    rm $filename 
 done
 
 for file in $GF_FILE_LIST; do
@@ -64,6 +66,8 @@ for file in $GF_FILE_LIST; do
     fi
     #unzip 
     unzip -o $filename
+    #remove file to conserve disk space
+    rm $filename 
 done
 
 
@@ -101,6 +105,8 @@ for map in $ASGS16_MAP; do
     TNAME=${ary[1]}
     echo "Loading $FNAME into DB table: $TNAME"
     ogr2ogr -f "PostgreSQL"  PG:"host=${HOST} port=${PORT} dbname=${DB} user=${USER} password=${PASS}"  ${FNAME} -nln ${TNAME} -overwrite -progress -lco GEOMETRY_NAME=geom_3577 -lco PRECISION=NO -t_srs EPSG:3577 -nlt MULTIPOLYGON --config PG_USE_COPY YES
+    #remove file to conserve disk
+    rm ${FNAME}
 done
 
 
@@ -126,11 +132,13 @@ for mbinstance in $ASGS16_MB_LIST; do
     TNAME=asgs16_mb
     echo "Loading $FNAME into DB table: $TNAME"
     ogr2ogr -f "PostgreSQL"  PG:"host=${HOST} port=${PORT} dbname=${DB} user=${USER} password=${PASS}"  ${FNAME} -nln ${TNAME} -progress -lco GEOMETRY_NAME=geom_3577 -lco PRECISION=NO -t_srs EPSG:3577 -nlt MULTIPOLYGON --config PG_USE_COPY YES
+    #remove file to conserve disk
+    rm ${FNAME}
 done
 
 #load geofabric
 GF_MAP="
-HR_Catchments_GDB/HR_Catchments.gdb|AHGFContractedCatchment|geofabric2-1-1_AHGFContractedCatchment
+HR_Catchments_GDB/HR_Catchments.gdb|AHGFContractedCatchment|geofabric2-1-1_ContractedCatchment
 HR_Regions_GDB/HR_Regions.gdb|AWRADrainageDivision|geofabric2-1-1_AWRADrainageDivision 
 HR_Regions_GDB/HR_Regions.gdb|RiverRegion|geofabric2-1-1_RiverRegion
 "
@@ -143,6 +151,8 @@ for map in $GF_MAP; do
     TNAME=${ary[2]}
     echo "$FNAME $TNAME"
     ogr2ogr -f "PostgreSQL"  PG:"host=${HOST} port=${PORT} dbname=${DB} user=${USER} password=${PASS}" ${FNAME} -nln ${TNAME} ${FEAT_NAME} -overwrite -progress -lco GEOMETRY_NAME=geom_3577 -lco PRECISION=NO -t_srs EPSG:3577 -nlt MULTIPOLYGON --config PG_USE_COPY YES
+    #remove file to conserve disk
+    rm ${FNAME}
 done
 
 #create views and count table
