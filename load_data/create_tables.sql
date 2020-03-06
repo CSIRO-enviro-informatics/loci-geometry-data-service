@@ -1,4 +1,4 @@
-drop materialized view combined_geoms;
+drop materialized view if exists combined_geoms;
 create materialized view combined_geoms as (
 	    select mb_code16 as id, geom_3577 as geom, 'asgs16_mb' as dataset from asgs16_mb
 	       UNION
@@ -38,7 +38,7 @@ create materialized view combined_geoms as (
 	       UNION
 	    select ssc_code16 as id, geom_3577 as geom, 'asgs16_ssc' as dataset from asgs16_ssc
 	       UNION
-	    select cast(hydroid as varchar) as id, geom_3577 as geom, 'geofabric2_1_1_ahgfcontractedcatchment' as dataset from geofabric2_1_1_ahgfcontractedcatchment
+	    select cast(hydroid as varchar) as id, geom_3577 as geom, 'geofabric2_1_1_contractedcatchment' as dataset from geofabric2_1_1_contractedcatchment
 	       UNION
 	    select cast(hydroid as varchar) as id, geom_3577 as geom, 'geofabric2_1_1_riverregion' as dataset from geofabric2_1_1_riverregion
 	       UNION
@@ -48,7 +48,7 @@ create materialized view combined_geoms as (
 
 CREATE INDEX gds_geom_idx ON combined_geoms USING GIST(geom);
 
-drop table combined_geom_count;
+drop table if exists combined_geom_count;
 
 CREATE TABLE combined_geom_count (
 	    geom_total_count integer    
