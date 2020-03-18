@@ -4,7 +4,8 @@ services:
   caddy:
     image: abiosoft/caddy
     ports:
-      - 443:2015
+      - 443:443
+      - 80:80
     volumes:
       - ./Caddyfile:/etc/Caddyfile
       - ./certs:/etc/ssl

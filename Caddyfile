@@ -1,10 +1,9 @@
 # Combination, check for HTTP scheme and redirect
-http://gds.loci.cat, https://gds.loci.cat {
-  redir {
-    if {scheme} is http
-    / https://{host}{uri}
-  }
-
+http://gds.loci.cat {
+  redir https://{host}{uri}
+  cors
+}
+https://gds.loci.cat {
   tls /etc/ssl/wildcard-loci-cat.bundle.pem /etc/ssl/wildcard-loci-cat.pem
   proxy / http://gservice:3000 {
      transparent
