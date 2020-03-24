@@ -9,6 +9,7 @@ services:
       - "GSDB_PORT=${GSDB_PORT:-5432}"
       - "GSDB_USER=${GSDB_USER:-jon}"
       - "GSDB_PASS=${GSDB_PASS:-jon}"
+      - "GSDB_CLIENT_MAX_CONN_POOL=${GSDB_CLIENT_MAX_CONN_POOL:-30}"
     volumes:
       - type: bind
         source: ${PWD}/theme/page_index.html
